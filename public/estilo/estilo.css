@@ -1,0 +1,109 @@
+.bord {
+  border: 2px solid red; }
+
+.navbar-brand {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 600; }
+  .navbar-brand:hover {
+    color: #ffffff; }
+  @media screen and (max-width: 900px) {
+    .navbar-brand {
+      font-size: 0.8rem; }
+      .navbar-brand img {
+        max-width: 80px;
+        max-height: auto; } }
+  @media screen and (min-width: 900px) {
+    .navbar-brand img {
+      max-width: 250px;
+      max-height: auto; } }
+
+#navBar ul {
+  padding: 0 2rem 0 2rem; }
+  #navBar ul li {
+    display: inline-block; }
+    #navBar ul li i {
+      margin-right: 5px; }
+
+.nav-link {
+  color: #ffffff; }
+
+nav {
+  background: #002c53; }
+
+.carousel-inner .carousel-item {
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 2s ease; }
+  @media screen and (max-width: 900px) {
+    .carousel-inner .carousel-item img {
+      max-height: 150px; } }
+  @media screen and (min-width: 900px) {
+    .carousel-inner .carousel-item img {
+      max-height: 380px; } }
+  .carousel-inner .carousel-item .carousel-caption h4 {
+    padding: 0.1rem;
+    display: inline-block;
+    background: #003a6d; }
+    @media screen and (max-width: 900px) {
+      .carousel-inner .carousel-item .carousel-caption h4 {
+        font-size: 0.8rem;
+        position: relative;
+        bottom: 0.9rem; } }
+  .carousel-inner .carousel-item .carousel-caption p {
+    padding: 5px;
+    display: block;
+    background: #003a6d; }
+    @media screen and (max-width: 900px) {
+      .carousel-inner .carousel-item .carousel-caption p {
+        position: relative;
+        top: 3.5rem;
+        font-size: 0.8rem; } }
+
+.aula {
+  max-height: 775px;
+  margin-right: 0;
+  padding-right: 0; }
+
+.principal {
+  background-color: #004786;
+  color: #ffffff; }
+  .principal .professor a {
+    text-decoration: none;
+    padding: 0.2rem;
+    border-radius: 5%;
+    display: inline-block;
+    color: #0062b9;
+    background: #ffffff; }
+    .principal .professor a:hover {
+      color: #002c53; }
+  .principal h2 {
+    padding-top: 3rem;
+    margin: 1rem 0 1rem 0; }
+  .principal .circle {
+    border-radius: 50%;
+    margin: 1rem;
+    padding: 0.9rem; }
+  .principal img {
+    margin: 0.1rem;
+    padding: 0.2rem; }
+
+.foot {
+  background: #002c53; }
+  @media screen and (max-width: 900px) {
+    .foot {
+      font-size: 0.8rem; }
+      .foot img {
+        max-width: 80px;
+        max-height: auto; } }
+  @media screen and (min-width: 900px) {
+    .foot img {
+      max-width: 150px;
+      max-height: auto; } }
+  .foot h5 {
+    color: white; }
+  .foot ul {
+    display: inline-block; }
+
+.button {
+  margin: 1rem 0 1rem 0; }

@@ -1,0 +1,153 @@
+$background-color: #002c53;
+$font-color:#ffffff;
+$test-color: #30ee0e;
+$small: 300px;
+$medium: 900px;
+@mixin logoresize{
+		@media screen and (max-width: $medium) {
+	    img{
+	    	max-width: 80px;
+	    	max-height: auto;
+	    }
+	    font-size: 0.8rem;
+	  }
+	@media screen and (min-width: $medium) {
+		img{
+	    	max-width: 250px;
+	    	max-height: auto;
+		}
+	  }
+}
+@mixin rodaperesize{
+		@media screen and (max-width: $medium) {
+	    img{
+	    	max-width: 80px;
+	    	max-height: auto;
+	    }
+	    font-size: 0.8rem;
+	  }
+	@media screen and (min-width: $medium) {
+		img{
+	    	max-width: 150px;
+	    	max-height: auto;
+		}
+	  }
+}
+
+.bord{
+	border: 2px solid red;
+}
+.navbar-brand{
+	color: $font-color;
+	font-size: 1.8rem;
+	font-weight: 600;
+	&:hover{
+		color:$font-color;
+	}
+	@include logoresize;
+}
+#navBar{
+		ul{
+			padding: 0 2rem 0 2rem;
+			li{
+				display: inline-block;
+				i{
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+.nav-link{
+	color: $font-color;
+}
+nav{
+	background: $background-color;
+}
+.carousel-inner{
+	.carousel-item{
+		transition: -webkit-transform 1s ease;
+  		transition: transform 1s ease;
+  		transition: transform 1s ease, -webkit-transform 2s ease;
+  		img{
+  			  @media screen and (max-width: $medium) {
+			    max-height: 150px;
+			  }
+			  @media screen and (min-width: $medium) {
+			    max-height: 380px;
+			  }
+  		}
+  		.carousel-caption{
+  			h4{
+  				padding: 0.1rem;
+  				display:inline-block;
+  				background:lighten($background-color, 5%);
+  				@media screen and (max-width: $medium) {
+  					font-size: 0.8rem;
+  					position: relative;
+  					bottom:0.9rem;
+				  }
+  			}
+  			p{
+  				padding: 5px;
+  				display:block;
+  				background:lighten($background-color, 5%);
+  				@media screen and (max-width: $medium) {
+  					position: relative;
+  					top: 3.5rem;
+				    font-size: 0.8rem;
+				  }
+  			}
+  		}
+	}
+}
+.aula{
+	max-height: 775px;
+	margin-right: 0;
+	padding-right: 0;
+}
+.principal{
+	.professor{
+		a{
+			// display:block;
+			text-decoration: none;
+				padding: 0.2rem;
+				border-radius: 5%;
+				display: inline-block;
+				color:lighten($background-color, 20%);;
+				background: $font-color;
+				&:hover{
+					color:$background-color;
+				}
+		}
+	}
+	background-color: lighten($background-color, 10%);
+	color: $font-color;
+	h2{
+		padding-top: 3rem;
+		margin: 1rem 0 1rem 0;
+	}
+	.circle{
+		border-radius: 50%;
+		margin:1rem;
+		padding: 0.9rem;
+	}
+	img{
+		margin:0.1rem;
+		padding: 0.2rem;
+	}
+}
+.foot{
+	background: $background-color;
+	@include rodaperesize;
+	h5{
+		color:white;
+	}
+	ul{
+		display: inline-block;
+	}
+}
+.button{
+	margin: 1rem 0 1rem 0;
+}
+
+
