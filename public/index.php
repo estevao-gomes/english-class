@@ -23,7 +23,7 @@
 							<div class="collapse navbar-collapse justify-content-end" id="navBar"><!-- Barra de navegação -->
 								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 									<li class="nav-item mx-2">
-										<a class="nav-link" href="index.html"><i class="fas fa-home"></i>Home</a>
+										<a class="nav-link" href="index.php"><i class="fas fa-home"></i>Home</a>
 									</li>
 									<li class="nav-item mx-2">
 										<a class="nav-link" href="curso.html"><i class="fas fa-file-alt"></i>Sobre o curso</a>
@@ -39,7 +39,7 @@
 			</nav>
 		</div>
 		<div class="row principal"><!-- Área principal contendo carrossel, login do aluno, imagens e posts do instagram -->
-			<div class="col-md-2"><!--  Área de login do aluno -->
+			<div class="col-md-2"><!--  Área de login ou inscrição do aluno -->
 				<?php if(!$auth->isLoggedIn()){ ?>
 				<div class="row">
 				<h4 class="text-light p-2 ms-4">Área do Aluno</h4>
@@ -60,6 +60,26 @@
 							</div>
 						</div>
 					</form>
+					<!-- Área de check para erros de login -->
+					<?php if(isset($_GET['login']) && $_GET['login']=='authError'){?><!-- Erro de autenticação (acesso a painel de controle não autorizado) -->
+						<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> 1Acesso não autorizado</span>
+							</div>
+						</div> 
+					<?php }else if(isset($_GET['login']) && $_GET['login']=='emailError'){ ?> Email <!-- errado -->
+						<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> Email incorreto</span>
+							</div>
+						</div>
+					<?php }else if(isset($_GET['login']) && $_GET['login']=='passwordError'){ ?> <!-- Senha errada -->
+						<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> Senha incorreta</span>
+							</div>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="row">
 				<h4 class="text-light p-2 ms-4">Área de Registro</h4>
@@ -85,8 +105,35 @@
 							</div>
 						</div>
 					</form>
+					<?php if(isset($_GET['signup']) && $_GET['signup']=='success'){?> <!-- Check para redirecionamento de sign up -->
+						<div class="row">
+							<div class="alert alert-success p-2 mx-4">
+								<span class="text-success"><i class="fas fa-times"></i> Registro realizado com sucesso. Favor faça login.</span>
+							</div>
+						</div>
+					<?php }else if(isset($_GET['signup']) && $_GET['signup']=='emailError'){ ?> <!-- Check para erro de email -->
+					 	<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> Erro no registro. Email inválido. Tente novamente.</span>
+							</div>
+						</div>
+					<?php }else if(isset($_GET['signup']) && $_GET['signup']=='userError'){ ?> <!-- Check para erro de usuário duplicado -->
+					 	<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> Erro no registro. Usuário já existe. Tente novamente.</span>
+							</div>
+						</div>
+					<?php }else if(isset($_GET['signup']) && $_GET['signup']=='passwordError'){ ?> <!-- Check para erro de senha inválida -->
+					 	<div class="row">
+							<div class="alert alert-danger p-2 mx-4">
+								<span class="text-danger"><i class="fas fa-times"></i> Erro no registro. Senha inválida. <br>
+								Sua senha deve ter ao menos 10 caracteres. <br>
+								Tente novamente.</span>
+							</div>
+						</div>
+					<?php } ?>
 				</div>
-				<?php } else{ ?>
+				<?php } 	else{ ?>
 				<div class="row">
 				<h4 class="text-light p-2 ms-4">Área do Aluno</h4>
 					<h5 class="text-light p-2 ms-4"><?=$username = $auth->getUsername();?></h5>
@@ -101,6 +148,13 @@
 					<form action="logout.php">
 						<button type="submit" class="form-control button btn-primary">Logout</button>
 					</form>
+					<?php if(isset($_GET['login']) && $_GET['login']=='authError'){?>
+						<div class="row">
+							<div class="p-2 ms-4 alert alert-danger">
+								<span class="text-danger"><i class="fas fa-times"></i> Acesso não autorizado</span>
+							</div>
+						</div>
+					<?php }?>
 				</div>
 				<?php } ?>
 			</div>

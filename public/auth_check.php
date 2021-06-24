@@ -6,6 +6,6 @@
     	echo 'Acesso autorizado';
     }else{
     	echo 'Acesso não autorizado';
-    	header('Location: index.php?login=error');
+    	header('Location: index.php?login=authError');
     }
 ?>
