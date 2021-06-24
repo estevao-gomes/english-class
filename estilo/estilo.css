@@ -68,6 +68,15 @@ nav {
 .principal {
   background-color: #004786;
   color: #ffffff; }
+  .principal .professor a {
+    text-decoration: none;
+    padding: 0.2rem;
+    border-radius: 5%;
+    display: inline-block;
+    color: #0062b9;
+    background: #ffffff; }
+    .principal .professor a:hover {
+      color: #002c53; }
   .principal h2 {
     padding-top: 3rem;
     margin: 1rem 0 1rem 0; }

@@ -89,7 +89,7 @@ nav{
   			}
   			p{
   				padding: 5px;
-  				display:inline-block;
+  				display:block;
   				background:lighten($background-color, 5%);
   				@media screen and (max-width: $medium) {
   					position: relative;
@@ -106,6 +106,20 @@ nav{
 	padding-right: 0;
 }
 .principal{
+	.professor{
+		a{
+			// display:block;
+			text-decoration: none;
+				padding: 0.2rem;
+				border-radius: 5%;
+				display: inline-block;
+				color:lighten($background-color, 20%);;
+				background: $font-color;
+				&:hover{
+					color:$background-color;
+				}
+		}
+	}
 	background-color: lighten($background-color, 10%);
 	color: $font-color;
 	h2{
