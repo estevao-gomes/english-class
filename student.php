@@ -39,15 +39,15 @@
 							</div>
 			</nav>
 		</div>
-		<div class="row principal"><!-- Área principal contendo carrossel, login do aluno, imagens e posts do instagram -->
-			<div class="col-md-2"><!--  Área de login do aluno -->
+		<div class="row principal"><!-- Área principal -->
+			<div class="col-md-2"><!--  Área de logout do aluno -->
 				<h4 class="text-light p-2 ms-4">Área do Aluno</h4>
 					<h5 class="text-light p-2 ms-4"><?=$username = $auth->getUsername();?></h5>
 					<form action="logout.php">
 						<button type="submit" class="form-control button btn-primary">Logout</button>
 					</form>
 			</div>
-			<div class="col-md-10 professor"> <!-- Área do professor -->
+			<div class="col-md-10 professor"> <!-- Área do aluno -->
 				<div class="row">
 					<div class="col-6">Área do Calendário</div>
 					<div class="col-6">
