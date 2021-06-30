@@ -1,5 +1,12 @@
 <?php
-	require 'auth_check.php'
+	require 'auth_check.php';
+	require 'db.php';
+
+	$numberOfUsers = getUsersNumber();
+	 for($i=1; $i <= $numberOfUsers; $i++) { 
+		$listOfUsers[$i-1] = getUsername($i);
+	 } 
+
 ?>
 </html>
 <!DOCTYPE html>
@@ -11,6 +18,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+	<script type="text/javascript" src="script.js"></script>
 	<title>Prof. Fernanda</title>
 </head>
 <body>
@@ -39,8 +47,8 @@
 							</div>
 			</nav>
 		</div>
-		<div class="row principal"><!-- Área principal contendo carrossel, login do aluno, imagens e posts do instagram -->
-			<div class="col-md-2"><!--  Área de login do aluno -->
+		<div class="row principal"><!-- Área principal -->
+			<div class="col-md-2"><!--  Área de logout do professor -->
 				<h4 class="text-light p-2 ms-4">Área do Professor</h4>
 					<h5 class="text-light p-2 ms-4"><?=$username = $auth->getUsername();?></h5>
 					<form action="logout.php">
@@ -55,23 +63,23 @@
 						<form method="post" action="">
 							<div class="row">
 								<div class="col">
+									<label class="form-label" for="data_aluno">Dia:</label>
+									<input class="form-control" type="date" name="data_aluno" id="data_agendamento_aluno">
+								</div>
+								<div class="col">
 									<label class="form-label" for="aluno">Aluno:</label>
-									<select class="form-select" name="horario" aria-label="selecao_horario">
+									<select class="form-select" name="aluno" aria-label="selecao_horario">
 									  <option selected>Selecione</option>
-									  <option value="1">Aluno 1</option>
-									  <option value="2">Aluno 2</option>
+									  <?php for($i=1; $i <= $numberOfUsers; $i++) { ?>
+									  	<option onclick="showAvailableTimes(this.value)" value=<?= $i ?>><?= $listOfUsers[$i-1] ?></option>
+									  <?php } ?>
 									</select>
 								</div>
-								<div class="col">
-									<label class="form-label" for="data_aluno">Dia:</label>
-									<input class="form-control" type="date" name="data_aluno" id="data_aluno">
-								</div>
+								
 								<div class="col">
 									<label class="form-label" for="horario">Horario:</label>
-									<select class="form-select" name="horario" aria-label="selecao_horario">
+									<select class="form-select" name="horario" aria-label="selecao_horario" id="selecao_agendamento_horario">
 									  <option selected>Selecione</option>
-									  <option value="1">Horário 1</option>
-									  <option value="2">Horário 2</option>
 									</select>
 								</div>
 								<div class="col d-flex align-items-end">
@@ -84,10 +92,11 @@
 							<div class="row">
 								<div class="col">
 									<label class="form-label" for="aluno">Aluno:</label>
-									<select class="form-select" name="horario" aria-label="selecao_horario">
+									<select class="form-select" name="aluno" aria-label="selecao_horario">
 									  <option selected>Selecione</option>
-									  <option value="1">Aluno 1</option>
-									  <option value="2">Aluno 2</option>
+									  <?php for($i=1; $i <= $numberOfUsers; $i++) { ?>
+									  	<option value=<?= $i ?>><?= $listOfUsers[$i-1] ?></option>
+									  <?php } ?>
 									</select>
 								</div>
 								<div class="col">
@@ -103,7 +112,7 @@
 									<input class="form-control" type="date" name="nova_data_aluno" id="data_aluno">
 								</div>
 								<div class="col">
-									<label class="form-label" for="horario">Novo horario:</label>
+									<label class="form-label" for="novo_horario">Novo horario:</label>
 									<select class="form-select" name="novo_horario" aria-label="selecao_horario">
 									  <option selected>Selecione</option>
 									  <option value="1">Horário 1</option>
@@ -123,10 +132,12 @@
 						<div class="row">
 							<div class="col">
 								<label class="form-label" for="aluno">Aluno:</label>
-								<select class="form-select" name="horario" aria-label="selecao_horario">
+								<select class="form-select" name="aluno" aria-label="selecao_horario">
 									<option selected>Selecione</option>
-									<option value="1">Aluno 1</option>
-									<option value="2">Aluno 2</option>
+									<?php for($i=1; $i <= $numberOfUsers; $i++) { ?>
+									  	<option value=<?= $i ?>><?= $listOfUsers[$i-1] ?></option>
+									  <?php 
+										} ?>
 								</select>
 							</div>
 							<div class="col d-flex align-items-end">
@@ -142,15 +153,17 @@
 							<div class="row mb-2">
 								<div class="col">
 									<label class="form-label" for="aluno">Aluno:</label>
-									<select class="form-select" name="horario" aria-label="selecao_horario">
+									<select class="form-select" name="aluno" aria-label="selecao_horario" id="doubtSelect">
 									  <option selected>Selecione</option>
-									  <option value="1">Aluno 1</option>
-									  <option value="2">Aluno 2</option>
+									  <?php for($i=1; $i <= $numberOfUsers; $i++) { ?>
+									  	<option onclick="showDoubt(this.value)" value=<?= $i ?>><?= $listOfUsers[$i-1] ?> </option>
+									  <?php }?>
 									</select>
 								</div>
 								<div class="col">
 									<label class="form-label" for="duvida">Ultima dúvida:</label>
-									<input type="text" readonly class="form-control" name="duvida">
+									<input type="text" readonly class="form-control" name="duvida" id="duvida"
+									>
 								</div>
 								<div class="col d-flex align-items-end">
 									<button class="btn btn-md"><i class="far fa-eye fa-2x text-light"></i></button>
